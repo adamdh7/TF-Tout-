@@ -1,0 +1,99 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: http://localhost:7777/tf-texte.html?
+Subject: TOUT-TF
+Date: Sat, 24 May 2025 01:14:40 -0400
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--3pyFc3uk3D5u50ekGBD0w6vydJASKfel336lvhyDWT----"
+
+
+------MultipartBoundary--3pyFc3uk3D5u50ekGBD0w6vydJASKfel336lvhyDWT----
+Content-Type: text/html
+Content-ID: <frame-6BBD12880F903059F02F6795E2A05717@mhtml.blink>
+Content-Transfer-Encoding: binary
+Content-Location: http://localhost:7777/tf-texte.html?
+
+<!DOCTYPE html><html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" type="text/css" href="cid:css-72b26f93-7721-46cc-968d-ad45d691be8c@mhtml.blink" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOUT-TF</title>
+  
+</head>
+<body>
+
+  <!-- Afiche sa sèlman si ou pa konekte -->
+  <div id="accessBox">
+    <h2>Créez un compte ou connectez-vous pour continuer</h2>
+  </div>
+
+  <div id="loginForm">
+    <input type="email" id="email" placeholder="Email"><br>
+    <input type="password" id="password" placeholder="Mot de passe"><br>
+    <button>Connexion</button>
+  </div>
+
+  <header>
+    <h1>TOUT-TF</h1>
+    <button id="adminBtn" class="admin-btn">+</button>
+  </header>
+
+  <div class="section" id="videoSection">
+    <input type="text" id="searchBar" placeholder="Rechercher une vidéo...">
+    <div class="video-row" id="videoContainer"></div>
+  </div>
+
+  <div id="formModal" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000a; justify-content:center; align-items:center;">
+    <div style="background:#222; padding:20px; border-radius:10px; width:90%; max-width:400px;">
+      <h3>Importer une vidéo</h3>
+      <input type="text" id="videoNom" placeholder="Nom vidéo" style="width:100%; padding:8px;"><br><br>
+      <input type="text" id="videoSaison" placeholder="Saison" style="width:100%; padding:8px;"><br><br>
+      <input type="text" id="videoEpisode" placeholder="Épisode" style="width:100%; padding:8px;"><br><br>
+      <input type="file" id="videoFile" accept="video/*" style="display:none;">
+      <button>Choisir vidéo</button>
+      <button>Ajouter</button>
+      <button style="float:right;">Fermer</button>
+    </div>
+  </div>
+
+  
+
+
+</body></html>
+------MultipartBoundary--3pyFc3uk3D5u50ekGBD0w6vydJASKfel336lvhyDWT----
+Content-Type: text/css
+Content-Transfer-Encoding: binary
+Content-Location: cid:css-72b26f93-7721-46cc-968d-ad45d691be8c@mhtml.blink
+
+@charset "utf-8";
+
+body { margin: 0px; font-family: Arial, sans-serif; background-color: rgb(17, 17, 17); color: white; }
+
+header { position: sticky; top: 0px; background-color: rgb(0, 0, 0); color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 999; }
+
+header h1 { color: red; font-size: 24px; }
+
+.admin-btn { background-color: rgb(51, 51, 51); color: white; border: none; padding: 6px 10px; border-radius: 5px; cursor: pointer; }
+
+.section, #formModal, header, #videoSection { display: none; }
+
+.video-row { display: flex; flex-wrap: wrap; gap: 15px; }
+
+.video-item { width: 300px; background-color: rgb(34, 34, 34); padding: 10px; border-radius: 8px; position: relative; }
+
+.video-item video { width: 100%; border-radius: 8px; }
+
+.video-title { margin-top: 5px; text-align: center; }
+
+.delete-btn { position: absolute; top: 8px; right: 8px; background: red; color: white; border: none; padding: 4px 8px; border-radius: 5px; cursor: pointer; font-size: 12px; display: none; }
+
+#loginForm { padding: 20px; text-align: center; }
+
+#loginForm input { margin: 5px; padding: 8px; border-radius: 5px; border: none; width: 200px; }
+
+#loginForm button { margin-top: 10px; padding: 8px 15px; border: none; background: red; color: white; border-radius: 5px; cursor: pointer; }
+
+#searchBar { width: 100%; padding: 10px; margin-top: 10px; border: none; border-radius: 5px; font-size: 16px; background: rgb(51, 51, 51); color: white; }
+
+#accessBox { background: linear-gradient(black, red); color: white; padding: 50px 20px; text-align: center; font-size: 18px; }
+------MultipartBoundary--3pyFc3uk3D5u50ekGBD0w6vydJASKfel336lvhyDWT------
