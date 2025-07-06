@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>TF-Stream</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      overflow-x: hidden;
+    }
+    .header {
+      padding: 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 10;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(90deg, #fff, #000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: blur(0.5px);
+    }
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px 0;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: #222;
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+    .filter-btn.active {
+      background: #e50914;
+    }
+    .search-container {
+      display: flex;
+      justify-content: center;
+      padding: 10px 20px;
+    }
+    .search-box {
+      width: 100%;
+      max-width: 500px;
+      background: #1c1c1e;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 15px;
+      color: white;
+      font-size: 16px;
+      box-shadow: inset 0 0 5px #000;
+      outline: none;
+    }
+
+    .video-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 20px;
+      max-height: 80vh;
+      overflow-y: auto;
+      flex-direction: column-reverse; /* scroll anlè-anba-anlè */
+      direction: rtl; /* scroll agoch-adwat-agòch */
+    }
+
+    .video-card {
+      position: relative;
+      width: 110px;
+      background: #111;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .video-card:hover {
+      transform: scale(1.03);
+    }
+
+    .video-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease;
+    }
+
+    .video-card:hover .card-overlay {
+      opacity: 1;
+    }
+
+    .card-overlay .play-icon {
+      font-size: 40px;
+      color: #e50914;
+    }
+
+    .video-card .info {
+      padding: 6px;
+      text-align: center;
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      direction: ltr;
+    }
+
+    .video-card button {
+      margin: 8px;
+      padding: 6px 10px;
+      background: #e50914;
+      border: none;
+      color: white;
+      border-radius: 20px;
+      cursor: pointer;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .video-card:hover button {
+      opacity: 1;
+    }
+
+    #detailPage {
+      display: none;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      background: #111;
+      overflow: hidden;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .main-info {
+      padding: 20px;
+      position: relative;
+    }
+
+    .voir-saison-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .voir-plus {
+      color: #aaa;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .saison-btn {
+      padding: 6px 12px;
+      background: #222;
+      border: none;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .details {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .episodes {
+      margin-top: 20px;
+    }
+
+    .episode-card {
+      background: #111;
+      margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .episode-title {
+      font-weight: bold;
+    }
+
+    .episode-description {
+      font-size: 13px;
+      color: #ccc;
+      margin-top: 5px;
+    }
+
+    .saison-overlay {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.95);
+      padding: 20px;
+      z-index: 5;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .saison-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .close-btn {
+      background: #333;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .saison-item {
+      padding: 12px;
+      background: #111;
+      margin: 5px 0;
+      border-radius: 6px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">TF-Stream</div>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCategory('Tout')">Tout</button>
+      <button class="filter-btn" onclick="filterCategory('Film')">Film</button>
+      <button class="filter-btn" onclick="filterCategory('Série')">Série</button>
+      <button class="filter-btn" onclick="filterCategory('Anime')">Anime</button>
+    </div>
+    <div class="search-container">
+      <input type="text" placeholder="Rechèch film..." class="search-box" oninput="filterSearch(this.value)">
+    </div>
+  </div>
+
+  <div id="listView">
+    <div class="video-list"></div>
+  </div>
+
+  <div id="detailPage">
+    <div class="video-container">
+      <video id="myVideo" poster="preview.jpg" controls>
+        <source id="videoSource" src="" type="video/mp4">
+      </video>
+      <div class="video-overlay" onclick="playVideo()"></div>
+    </div>
+    <div class="main-info">
+      <h2 id="videoTitle">Nom Film la</h2>
+      <div class="voir-saison-row">
+        <div class="voir-plus" onclick="toggleDetails()">Voir plus...</div>
+        <button class="saison-btn" id="saisonBtn" onclick="openSaison()">Afficher Saison ❌ Saison 1</button>
+      </div>
+      <div class="details" id="details"></div>
+      <div class="episodes" id="episodes"></div>
+      <div class="saison-overlay" id="saisonOverlay"></div>
+      <div style="text-align:center;margin:20px;">
+        <button onclick="backToList()" style="padding:10px 20px;border:none;background:#333;color:white;border-radius:999px;">← Retounen</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let videos = [], currentVideo = null, currentSeason = 0;
+
+    fetch('video.json')
+      .then(res => res.json())
+      .then(data => {
+        videos = data;
+        const list = document.querySelector('.video-list');
+        list.innerHTML = '';
+        data.forEach(video => {
+          const card = document.createElement('div');
+          card.className = 'video-card';
+          card.onclick = () => showDetail(video.title);
+          card.innerHTML = `
+            <img src="${video.thumb}" />
+            <div class="card-overlay"><span class="play-icon">▶</span></div>
+            <div class="info"><strong>${video.title}</strong><br><button>Lecture</button></div>
+          `;
+          list.appendChild(card);
+        });
+      });
+
+    function showDetail(title) {
+      currentVideo = videos.find(v => v.title === title);
+      if (!currentVideo) return;
+      currentSeason = 0;
+      updateSeasonDisplay();
+      document.getElementById("listView").style.display = "none";
+      document.getElementById("detailPage").style.display = "block";
+      document.querySelector(".header").style.display = "none";
+      document.getElementById("videoTitle").innerText = currentVideo.title;
+
+      const myVideo = document.getElementById("myVideo");
+      const source = document.getElementById("videoSource");
+      const firstEpisode = currentVideo.seasons?.[0]?.episodes?.[0];
+      if (firstEpisode) {
+        source.src = firstEpisode.video;
+        myVideo.load();
+      }
+
+      document.getElementById("details").innerHTML = `
+        <p><strong>Ane:</strong> ${currentVideo.year}</p>
+        <p><strong>Bio:</strong> ${currentVideo.bio}</p>
+        <p><strong>Info:</strong> ${currentVideo.info}</p>
+      `;
+
+      renderEpisodes(currentSeason);
+      renderSaisonOverlay();
+    }
+
+    function backToList() {
+      document.getElementById("detailPage").style.display = "none";
+      document.getElementById("listView").style.display = "block";
+      document.querySelector(".header").style.display = "block";
+      const vid = document.getElementById("myVideo");
+      vid.pause();
+      vid.currentTime = 0;
+    }
+
+    function renderEpisodes(seasonIndex) {
+      const epContainer = document.getElementById("episodes");
+      epContainer.innerHTML = '';
+      const myVideo = document.getElementById("myVideo");
+      const source = document.getElementById("videoSource");
+      currentVideo.seasons[seasonIndex].episodes.forEach(ep => {
+        const epCard = document.createElement('div');
+        epCard.className = 'episode-card';
+        epCard.innerHTML = `<div class="episode-title">${ep.title}</div><div class="episode-description">${ep.description}</div>`;
+        epCard.onclick = () => {
+          source.src = ep.video;
+          myVideo.load();
+          myVideo.play();
+        };
+        epContainer.appendChild(epCard);
+      });
+      updateSeasonDisplay();
+    }
+
+    function updateSeasonDisplay() {
+      document.getElementById("saisonBtn").innerHTML = `Afficher Saison ❌ Saison ${currentSeason + 1}`;
+    }
+
+    function renderSaisonOverlay() {
+      const overlay = document.getElementById("saisonOverlay");
+      overlay.innerHTML = `
+        <div class="saison-header">
+          <h3>List des Saisons</h3>
+          <button class="close-btn" onclick="closeSaison()">×</button>
+        </div>
+      `;
+      currentVideo.seasons.forEach((saison, index) => {
+        const sItem = document.createElement("div");
+        sItem.className = "saison-item";
+        sItem.innerText = saison.season;
+        sItem.onclick = () => {
+          currentSeason = index;
+          renderEpisodes(index);
+          closeSaison();
+        };
+        overlay.appendChild(sItem);
+      });
+    }
+
+    function toggleDetails() {
+      const details = document.getElementById('details');
+      details.style.display = details.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function openSaison() {
+      document.getElementById('saisonOverlay').style.display = 'block';
+    }
+
+    function closeSaison() {
+      document.getElementById('saisonOverlay').style.display = 'none';
+    }
+
+    function filterCategory(cat) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      if (cat === 'Tout') displayVideos(videos);
+      else displayVideos(videos.filter(v => v.category.toLowerCase() === cat.toLowerCase()));
+    }
+
+    function filterSearch(term) {
+      const termLower = term.toLowerCase();
+      displayVideos(videos.filter(v => v.title.toLowerCase().includes(termLower)));
+    }
+
+    function displayVideos(videosToShow) {
+      const list = document.querySelector('.video-list');
+      list.innerHTML = '';
+      videosToShow.forEach(video => {
+        const card = document.createElement('div');
+        card.className = 'video-card';
+        card.onclick = () => showDetail(video.title);
+        card.innerHTML = `
+          <img src="${video.thumb}" />
+          <div class="card-overlay"><span class="play-icon">▶</span></div>
+          <div class="info"><strong>${video.title}</strong><br><button>Lecture</button></div>
+        `;
+        list.appendChild(card);
+      });
+    }
+  </script>
+</body>
+  </html>
