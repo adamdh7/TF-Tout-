@@ -1,216 +1,24 @@
 [
   {
-    "title": "Martin Mystère",
-    "thumb": "https://files.catbox.moe/55ws4x.png",
-    "category": "Anime",
-    "year": "2003",
-    "bio": "Martin Mystère se yon jèn etidyan detektif paranormal ki travay pou yon ajans sekrè ki rele The Center.",
-    "info": "D'H7:Tergene",
-    "seasons": [
+    "Titre": "",
+    "Url Thumb": "https://res.cloudinary.com/dckwrqrur/image/upload/v1752989867/tf-stream-url/IMG-20250624-WA0067_oq562x.jpg",
+    "Catégorié": "Film",
+    "Description":"Vous êtes ce que vous mangez.",
+    "Bio": "",
+    "Info": "",
+    "Saisons": [
       {
-        "season": 1,
+        "description": "",
+        "bio": "",
+        "info": "",
         "episodes": [
           {
-            "title": "1:Le réveil de la créature du marais",
-            "description": "La Créature du Marais",
-            "video": "https://ia903404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 1】【La Créature du Marais】【VF】【MPEG-4 AVC 1080p FHD AAC-LC】【MP4】.ia.mp4"
-          },
-          {
-            "title": "2:L’essaim contre-attaque (Far West)",
-            "description": "L’Essaim Contre-Attaque",
-            "video": "https://ia803404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 2】【L’Essaim Contre-Attaque】【VF】【MPEG-4 AVC 1080p FHD AAC-LC】【MP4】.ia.mp4"
-          },
-          {
-            "title": "3:Le cri venu d’ailleurs (Vaisseau Fantôme)",
-            "description": "Le Cri venu d’Ailleurs",
-            "video": "https://ia803404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 3】【Le Cri venu d’Ailleurs 】【VF】【MPEG-4 AVC 1080p FHD AAC-LC】【MP4】.ia.mp4"
-          },
-          {
-            "title": "4:Le Slime est vivant (Maison aux Miroirs)",
-            "description": "Le Slime est Vivant",
-            "video": "https://ia903404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 4】【Le Slime est Vivant】【VF】【MPEG-4 AVC 1080p FHD AAC-LC】【MP4】.ia.mp4"
-          },
-          {
-            "title": "5:La malédiction des abysses (Secret du Pharaon)",
-            "description": "La Malédiction des Abysses",
-            "video": "https://ia903404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 5】【La Malédiction des Abysses】【VF】【MPEG-4 AVC 1080p FHD AAC-LC】【MP4】.ia.mp4"
-          },
-          {
-            "title": "6:Le cercle de l’effroi (Forêt des Ombres)",
-            "description": "Le Cercle de l’Effroi",
-            "video": "https://ia803404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 6】【Le Cercle de l’Effroi】【VF】【MPEG-4 AVC 1080p FHD AAC-LC】【MP4】.ia.mp4"
-          },
-          {
-            "title": "7:La créature du Chaos (Temple Englouti)",
-            "description": "La Créature du Chaos",
-            "video": "https://ia803404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 7】【La Créature du Chaos】 【VF】【MPEG-4 AVC 1080p FHD AAC-LC】【MP4】.ia.mp4"
-          },
-          {
-            "title": "8:La Frayeur des Neiges (Masque de l’Ombre)",
-            "description": "La Frayeur des Neiges",
-            "video": "https://ia803404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 8】【La Frayeur des Neiges】【VF】【MPEG-4 AVC 1080p FHD AAC-LC】【MP4】.ia.mp4"
-          },
-          {
-            "title": "9:La Marque de Mimésis (Fantôme de l’Opéra)",
-            "description": "La Marque de Mimésis",
-            "video": "https://ia903404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 9】【La Marque de Mimésis】 【VF】【MPEG-4 AVC 1080p FHD AAC-LC】【MP4】.mp4"
-          },
-          {
-            "title": "10:L’Attaque du Marchand de Sable (Vallée Interdite)",
-            "description": "L’Attaque du Marchand de Sable",
-            "video": "https://ia903404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 10】【L’Attaque du Marchand de Sable】【VF】【MPEG-4 AVC 1080p FHD AAC-LC】【MP4】.ia.mp4"
-          },
-          {
-            "title": "11:Enlevés dans l’Autre Dimension (Secret des Incas)",
-            "description": "Enlevés dans l’Autre Dimension",
-            "video": "https://ia803404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 11】【Enlevés dans l’Autre Dimension】【VF】【MPEG-4 AVC 1080p FHD AAC-LC】【MP4】.ia.mp4"
-          },
-          {
-            "title": "12:Ils viennent des Profondeurs (Mystère du Labo)",
-            "description": "Ils viennent des Profondeurs",
-            "video": "https://ia803404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 12】【Ils viennent des Profondeurs】【VF】【MPEG-4 AVC 1080p FHD AAC-LC】【MP4】.ia.mp4"
-          },
-          {
-            "title": "13:La Vengeance du Mutant (Voyage Temporel)",
-            "description": "La Vengeance du Mutant",
-            "video": "https://ia903404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 13】【La Vengeance du Mutant】【VF】【MPEG-4 AVC 1080p FHD AAC-LC】【MP4】.mp4"
-          },
-          {
-            "title": "14:L’Attaque des Vampires (Clé d’Argent)",
-            "description": "L’Attaque des Vampires",
-            "video": "https://ia903404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 14】【L’Attaque des Vampires】【VF】【MPEG-4 AVC 1080p FHD AAC-LC】【MP4】.ia.mp4"
-          },
-          {
-            "title": "15:L’Antre des Esprits Frappeurs (Île de Verre)",
-            "description": "L’Antre des Esprits Frappeurs",
-            "video": "https://ia903404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 15】【L’Antre des Esprits Frappeurs】【VF】【MPEG-4 AVC 1080p FHD AAC-LC】【MP4】.ia.mp4"
-          },
-          {
-            "title": "16:Le Monstre vient de l’Intérieur (Dragon du Nord)",
-            "description": "Le Monstre vient de l’Intérieur",
-            "video": "https://ia803404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 16】【Le Monstre vient de l’Intérieur】【VF】【MP4】.ia.mp4"
-          },
-          {
-            "title": "17:Le Bijou Maudit d’Halloween (Chambre des Rêves)",
-            "description": "Le Bijou Maudit d’Halloween",
-            "video": "https://ia803404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 17】【Le Bijou Maudit d’Halloween】【VF】【MP4】.ia.mp4"
-          },
-          {
-            "title": "18:Le Cauchemar de l’Été (Manuscrit Maudit)",
-            "description": "Le Cauchemar de l’Été",
-            "video": "https://ia903404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 18】【Le Cauchemar de l’Été 】【VF】【MP4】.mp4"
-          },
-          {
-            "title": "19:Le Réveil du Druide Noir (Pont des Âmes)",
-            "description": "Le Réveil du Druide Noir",
-            "video": "https://ia903404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 19】【Le Réveil du Druide Noir】【VF】【PL】.ia.mp4"
-          },
-          {
-            "title": "20:La Créature de la Grotte Mystérieuse (Cercle des Druides)",
-            "description": "La Créature de la Grotte Mystérieuse",
-            "video": "https://ia803404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 20】【La Créature de la Grotte Mystérieuse】【VF】【MP4】.ia.mp4"
-          },
-          {
-            "title": "21:L’Œil du Cyclone",
-            "description": "L’Œil du Cyclone",
-            "video": "https://ia803404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 21】【L’Œil du Cyclone】【VF】【MP4】.ia.mp4"
-          },
-          {
-            "title": "22:L’Attaque du Génie (Géant du Fjord)",
-            "description": "L’Attaque du Génie",
-            "video": "https://ia803404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 22】【L’Attaque du Génie】【VF】【MP4】.mp4"
-          },
-          {
-            "title": "23:Le Retour des Monstres Gluants (Pyramide Oubliée)",
-            "description": "Le Retour des Monstres Gluants",
-            "video": "https://ia803404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 23】【Le Retour des Monstres Gluants】【VF】【MP4】.ia.mp4"
-          },
-          {
-            "title": "24:L’Armée des Ténèbres (Ultime Énigme)",
-            "description": "L’Armée des Ténèbres",
-            "video": "https://ia803404.us.archive.org/15/items/AULVAC-Martin-Mystere-saison-1-COMPLETE-VF-mpeg-4-avc-1080p-fhd-aac-lc-mp4/【AULVAC】【Martin Mystère】【Saison 1】【Épisode 24】【L’Armée des Ténèbres】【VF】【MP4】.ia.mp4"
+            "description": "",
+            "video": ""
           }
         ]
-      },
-      {
-        "season": 2,
-        "episodes": [
-          {
-            "title": "1:Un Noël éternel",
-            "description": "Un Noël Éternel",
-            "video": "https://ia800405.us.archive.org/24/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【Martin Mystère】【Saison 2】【Épisode 1】【Un Noël Éternel】【VF】【MP4】.ia.mp4"                                                                           },
-          {                                                                         "title": "2:Le Vaudou Frappeur",
-            "description": "Le Vaudou Frappeur",                                    "video": "https://dn721602.ca.archive.org/0/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【Martin Mystère】【Saison 2】【Épisode 2】【Le Vaudou Frappeur】【VF】【MP4 】.ia.mp4"                                                                        },
-          {
-            "title": "3:La Menace vient de l’Espace – Partie 1",
-            "description": "La Menace vient de l’Espace (Partie ①)",
-            "video": "https://ia600405.us.archive.org/24/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【… 】【Épisode 3】【La Menace vient de l’Espace (Partie ①)】【VF】【MP4】.ia.mp4"
-          },
-          {                                                                         "title": "4:La Menace vient de l’Espace – Partie 2",
-            "description": "La Menace vient de l’Espace (Partie ②)",
-            "video": "https://dn721602.ca.archive.org/0/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【…】【Épisode 4】【La Menace vient de l’Espace (Part ②)】【VF】【MP4】.ia.mp4"
-          },                                                                      {
-            "title": "5:Les Zombies Maudits",
-            "description": "Les Zombies Maudits",
-            "video": "https://dn721602.ca.archive.org/0/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【…】【Épisode 5】【Les Zombies Maudits】【VF】【MP4】.ia.mp4"
-          },                                                                      {
-            "title": "6:Hurlements dans la Forêt",
-            "description": "Hurlements dans la Forêt",
-            "video": "https://dn721602.ca.archive.org/0/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【…】【Épisode 6】【Hurlements dans la Forêt】【VF】【MP4】.ia.mp4"
-          },
-          {
-            "title": "7:L’Homme-Mite Attaque",                                      "description": "L’Homme-Mite Attaque",
-            "video": "https://dn721602.ca.archive.org/0/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【…】【Épisode 7】【L’Homme-Mite Attaque】【VF】【MP4】.ia.mp4"
-          },
-          {
-            "title": "8:Le Brouillard de l’Effroi",                                 "description": "Le Brouillard de l’Effroi",
-            "video": "https://dn721602.ca.archive.org/0/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【…】【Épisode 8】【Le Brouillard de l’Effroi】【VF】【MP4】.ia.mp4"
-          },
-          {
-            "title": "9:La Menace du Voyant Fou (Créature des Glaces)",             "description": "La Menace du Voyant Fou",
-            "video": "https://ia600405.us.archive.org/24/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【… 】【Épisode 9】【La Menace du Voyant Fou】【VF】【MP4】.ia.mp4"
-          },
-          {
-            "title": "10:Le Carnaval des Monstres (Trésor des Pirates)",
-            "description": "Le Carnaval des Monstres",
-            "video": "https://dn721602.ca.archive.org/0/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【…】【Épisode 10】【Le Carnaval des Monstres】【VF】【MP4】.ia.mp4"
-          },
-          {
-            "title": "11:L’Invasion des Hommes-Slime (Masque du Temps)",
-            "description": "L’Invasion des Hommes-Slime",
-            "video": "https://ia800405.us.archive.org/24/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【… 】【Épisode 11】【L’Invasion des Hommes-Slime】【VF】【MP4】.ia.mp4"
-          },
-          {
-            "title": "12:La Tribu de l’Oubli (Fantôme de la Bibliothèque)",
-            "description": "La Tribu de l’Oubli",
-            "video": "https://dn721602.ca.archive.org/0/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【…】【Épisode 12】【La Tribu de l’Oubli】【VF】【MP4】.mp4"
-          },
-          {
-            "title": "13:La Malédiction de l’Esprit Mutant (Labyrinthe Inversé)",
-            "description": "La Malédiction de l’Esprit Mutant",
-            "video": "https://dn721602.ca.archive.org/0/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【…】【Épisode 13】【La Malédiction de l’Esprit Mutant】【VF】【MP4】.mp4"
-          },                                                                      {                                                                         "title": "14:Le Microbe venu d’Ailleurs (Énigme des Sables)",
-            "description": "Le Microbe venu d’Ailleurs",
-            "video": "https://dn721602.ca.archive.org/0/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【…】【Épisode 14】【Le Microbe venu d’Ailleurs】【VF】【MP4】.mp4"
-          },
-          {
-            "title": "15:La Bataille des Ténèbres – Partie 1 (Retour de Java)",
-            "description": "La Bataille des Ténèbres (Partie ①)",                
-             "video": "https://ia800405.us.archive.org/24/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【… 】【Épisode 15】【La Bataille des Ténèbres (Partie ①)】【VF】【MP4】.ia.mp4"                                 
-          },
-          {
-           "title": "16:La Bataille des Ténèbres – Partie 2 / Nuit des Démons",
-            "description": "La Bataille des Ténèbres (Partie ②)",
-            "video": "https://dn721602.ca.archive.org/0/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【…】【Épisode 16】【La Bataille des Ténèbres (Partie ②)】【VF】【MP4】.ia.mp4"  
-                     }
-        ]
-      },
-      {
-        "season": 2,
-        "episodes": [
-          {
-            "title": "1:Un Noël éternel",
-            "description": "Un Noël Éternel",
-            "video": "https://ia800405.us.archive.org/24/items/AULVAC-Martin-Mystere-Saison-2-COMPLETE-VF-MPEG4-AVC-1080P-FHD-mp4/【AULVAC】【Martin Mystère】【Saison 2】【Épisode 1】【Un Noël Éternel】【VF】【MP4】.ia.mp4"                                                                           },
-          {                                          
-         }
+      }
+    ]
+  }
+]
+~ $
