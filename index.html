@@ -4,6 +4,13 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <title>TF-Compress</title>
+ <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/jpeg" href="https://pub-492e70d33eda40ce82bfd913ddb4cd90.r2.dev/1761695466861-Screenshot_20251028_194846_Chrome.jpg" />
+  <link rel="apple-touch-icon" href="https://pub-492e70d33eda40ce82bfd913ddb4cd90.r2.dev/1761695466861-Screenshot_20251028_194846_Chrome.jpg" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 <style>
   *,*::before,*::after{box-sizing:border-box}
   :root{
@@ -351,5 +358,33 @@ replaceAllBtn.addEventListener('click', ()=>{ /* reuse replaceAll from earlier i
 
 (function init(){ compressAllBtn.disabled = true; replaceAllBtn.disabled = true; clearAllBtn.disabled = true; resultsSection.style.display='none'; overallFill.style.width='0%'; overallText.textContent='0% — 0 B / 0 B'; })();
 </script>
+ <script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' })
+      .then(reg => {
+        // registration succeeded
+        console.log('SW registered:', reg.scope);
+        // optional: request caches list from SW
+        navigator.serviceWorker.ready.then(swReg => {
+          if (swReg.active && swReg.active.postMessage) {
+            // ask worker to list caches (worker replies via postMessage to page)
+            swReg.active.postMessage({ type: 'LIST_CACHES' });
+          }
+        });
+      })
+      .catch(err => console.warn('SW register failed:', err));
+  });
+
+  // receive messages from SW (optional)
+  navigator.serviceWorker.addEventListener('message', (ev) => {
+    if (!ev.data) return;
+    if (ev.data.type === 'CACHES_LIST') {
+      // console.log('Service worker caches:', ev.data.caches);
+      // you can surface that info in UI for debug if you want
+    }
+  });
+}
+ </script>
 </body>
 </html>
