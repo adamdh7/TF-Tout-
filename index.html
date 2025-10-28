@@ -58,7 +58,7 @@
     </header>
 
     <section class="card">
-      <h3 style="margin:0 0 8px 0">1) Chwazi fichye</h3>
+      <h3 style="margin:0 0 8px 0"></h3>
       <div class="row" style="align-items:center">
         <div class="col narrow">
           <button id="chooseFiles" class="btn">Chwazi fichye</button>
@@ -137,7 +137,7 @@ function formatBytes(n){ if(!n && n!==0) return '0 B'; if(n<1024) return n+' B';
 function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
 const hasPicker = !!window.showOpenFilePicker;
-supportHint.textContent = hasPicker ? '✅ File Picker disponib (pèmèt Ranplase si otorize).' : '⚠️ Fallback input ap itilize si picker pa disponib.';
+supportHint.textContent = hasPicker ? '' : '⚠️ Fallback input ap itilize si picker pa disponib.';
 qualityEl.oninput = ()=> qv.textContent = qualityEl.value;
 
 /* selection */
