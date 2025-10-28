@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="ht">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>TF-Compress</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --bg:#f6f7fb; --card:#fff; --muted:#5f6872; --accent:#007aff; --success:#0f9d58;
+    --radius:14px; --pad:14px; --shadow:0 8px 20px rgba(11,20,40,0.06);
+  }
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;background:var(--bg);color:#0b1220;-webkit-font-smoothing:antialiased}
+  .app{max-width:980px;margin:0 auto;padding:calc(env(safe-area-inset-top)+12px) var(--pad) var(--pad)}
+  header{text-align:center;margin-bottom:14px}
+  header .title{font-weight:700;font-size:1.05rem}
+  header .subtitle{color:var(--muted);font-size:0.92rem;margin-top:6px}
+
+  .card{background:var(--card);border-radius:var(--radius);padding:14px;margin-bottom:14px;box-shadow:var(--shadow);overflow:hidden}
+  .row{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start}
+  .col{flex:1;min-width:0}
+  .col.narrow{flex-basis:260px;min-width:0}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:12px;border:0;background:var(--accent);color:#fff;font-weight:600;cursor:pointer}
+  .btn.ghost{background:transparent;border:1px solid #dbeeff;color:var(--accent)}
+  .btn.small{padding:6px 8px;font-size:0.85rem;border-radius:8px}
+  .btn:disabled{opacity:.55;cursor:not-allowed}
+
+  input[type=file]{display:none}
+  label{display:block;margin-top:8px;color:var(--muted)}
+  input[type=range]{width:100%}
+  input[type=number]{width:100%;padding:8px;border-radius:10px;border:1px solid #eef4fb}
+
+  img.preview{width:100%;height:auto;border-radius:12px;border:1px solid #edf3fb;display:block;object-fit:cover;background:#fafcff}
+  .meta{color:var(--muted);font-size:0.88rem;margin-top:6px}
+
+  /* results */
+  .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+  .mini-card{background:#fff;border-radius:12px;padding:8px;border:1px solid #eef4fb;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;min-height:170px}
+  .mini-thumb{width:100%;height:84px;object-fit:cover;border-radius:8px;background:#f8fbff}
+  .mini-label{font-weight:700;font-size:0.86rem;color:#0b1220}
+  .mini-meta{font-size:0.78rem;color:var(--muted)}
+
+  .overlay { position:absolute;inset:0;background:rgba(0,0,0,0.45);border-radius:12px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem; }
+
+  .top-status{margin-bottom:8px;font-weight:600;color:var(--muted)}
+  .progress-line { width:100%; background:#eef6ff; height:10px; border-radius:8px; overflow:hidden; }
+  .progress-fill { height:10px; background:var(--accent); width:0%; transition:width 180ms linear; }
+
+  @media (max-width:720px){ .row{flex-direction:column} .btn{width:100%} .col.narrow{flex-basis:auto} .app{padding-left:12px;padding-right:12px} }
+</style>
+</head>
+<body>
+  <div class="app" aria-label="Compress & Replace">
+    <header>
+      <div class="title">TF-Compress</div>
+      <div class="subtitle"></div>
+    </header>
+
+    <section class="card">
+      <h3 style="margin:0 0 8px 0">1) Chwazi fichye</h3>
+      <div class="row" style="align-items:center">
+        <div class="col narrow">
+          <button id="chooseFiles" class="btn">Chwazi fichye</button>
+        </div>
+        <div class="col" style="display:flex;align-items:center;gap:8px">
+          <input id="fileInput" type="file" accept="image/*,video/*" multiple>
+          <div id="supportHint" class="meta" style="margin-left:8px"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="settingsCard">
+      <div class="row">
+        <div class="col">
+          <h4 style="margin:0 0 6px 0">Paramèt</h4>
+          <label>Kalite (Quality): <strong id="qv">80</strong>
+            <input id="quality" type="range" min="10" max="95" value="80">
+          </label>
+          <label style="margin-top:8px">Max width (px, 0 = kenbe):
+            <input id="maxw" type="number" min="0" value="0">
+          </label>
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+            <button id="compressAll" class="btn" disabled>Konprese tout</button>
+            <button id="replaceAll" class="btn ghost" disabled>Ranplase tout</button>
+            <button id="clearAll" class="btn ghost" disabled>Efase tout</button>
+          </div>
+        </div>
+        <div class="col narrow" style="min-width:200px">
+          <h4 style="margin:0 0 6px 0">Rezime</h4>
+          <div id="summary" class="meta">Pa gen fichye chwazi</div>
+          <div id="topStatus" class="top-status" style="margin-top:8px"></div>
+          <div style="margin-top:8px">
+            <div class="meta">Pwogrè total</div>
+            <div style="margin-top:6px">
+              <div class="progress-line"><div id="overallFill" class="progress-fill" style="width:0%"></div></div>
+              <div id="overallText" class="meta" style="margin-top:6px">0% — 0 B / 0 B</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="resultsSection" style="display:none">
+      <h3 style="margin-top:0">Rezilta</h3>
+      <div id="resultsContainer"></div>
+    </section>
+  </div>
+
+<script>
+/* Frontend minimal — uses server SSE for progress (no UI logs) */
+
+const chooseFiles = document.getElementById('chooseFiles');
+const fileInput = document.getElementById('fileInput');
+const supportHint = document.getElementById('supportHint');
+const qualityEl = document.getElementById('quality');
+const qv = document.getElementById('qv');
+const maxw = document.getElementById('maxw');
+const compressAllBtn = document.getElementById('compressAll');
+const replaceAllBtn = document.getElementById('replaceAll');
+const clearAllBtn = document.getElementById('clearAll');
+const summary = document.getElementById('summary');
+const topStatus = document.getElementById('topStatus');
+const resultsSection = document.getElementById('resultsSection');
+const resultsContainer = document.getElementById('resultsContainer');
+const overallFill = document.getElementById('overallFill');
+const overallText = document.getElementById('overallText');
+
+let items = [];
+let clientId = null;
+let sse = null;
+let sseListenersAttached = false;
+let pendingRender = false;
+
+/* helpers */
+function formatBytes(n){ if(!n && n!==0) return '0 B'; if(n<1024) return n+' B'; if(n<1024*1024) return (n/1024).toFixed(1)+' KB'; return (n/1024/1024).toFixed(2)+' MB'; }
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+const hasPicker = !!window.showOpenFilePicker;
+supportHint.textContent = hasPicker ? '✅ File Picker disponib (pèmèt Ranplase si otorize).' : '⚠️ Fallback input ap itilize si picker pa disponib.';
+qualityEl.oninput = ()=> qv.textContent = qualityEl.value;
+
+/* selection */
+chooseFiles.addEventListener('click', async ()=>{
+  if (hasPicker){
+    try {
+      const handles = await window.showOpenFilePicker({ multiple:true, types:[{ description:'Images & Videos', accept:{ 'image/*':['.png','.jpg','.jpeg','.webp'], 'video/*':['.mp4','.mov','.webm'] } }]});
+      await processHandles(handles);
+    } catch(e){ console.warn('picker canceled', e); }
+  } else fileInput.click();
+});
+
+fileInput.addEventListener('change', (ev)=>{
+  const fl = Array.from(ev.target.files || []);
+  items = fl.map(f => ({ file: f, handle: null, type: f.type.startsWith('image/') ? 'image' : (f.type.startsWith('video/') ? 'video' : 'other'), originalSize: f.size, compressedSize: null, thumbUrl:null, isCompressing:false, progress:0, processedBytes:0, outPath:null }));
+  updateUI();
+});
+
+async function processHandles(handles){
+  items = [];
+  for (let h of handles){
+    try { const f = await h.getFile(); const t = f.type.startsWith('image/') ? 'image' : (f.type.startsWith('video/') ? 'video' : 'other'); items.push({ file:f, handle:h, type:t, originalSize:f.size, compressedSize:null, thumbUrl:null, isCompressing:false, progress:0, processedBytes:0, outPath:null }); }
+    catch(e){ items.push({ file:null, handle:h, type:'unknown', originalSize:0, compressedSize:null, thumbUrl:null, isCompressing:false, progress:0, processedBytes:0, outPath:null }); }
+  }
+  updateUI();
+}
+
+/* UI update/render throttled */
+function scheduleRender(){ if (pendingRender) return; pendingRender = true; requestAnimationFrame(()=>{ pendingRender=false; renderResults(); updateOverallProgress(); }); }
+function updateUI(){
+  if (!items || items.length===0){ summary.textContent='Pa gen fichye chwazi'; compressAllBtn.disabled=true; replaceAllBtn.disabled=true; clearAllBtn.disabled=true; resultsSection.style.display='none'; topStatus.textContent=''; updateOverallProgress(); return; }
+  const counts = items.reduce((a,i)=>{ a[i.type]=(a[i.type]||0)+1; return a; },{});
+  let parts = []; if (counts.image) parts.push(counts.image+' imaj'); if (counts.video) parts.push(counts.video+' videyo');
+  summary.textContent = parts.join(' • ') + ' — ' + items.length + ' fichye';
+  compressAllBtn.disabled = false; clearAllBtn.disabled = false; replaceAllBtn.disabled = !items.some(i=>i.handle);
+  resultsSection.style.display = 'block';
+  scheduleRender();
+}
+
+function renderResults(){
+  resultsContainer.innerHTML = '';
+  if (items.length===1) { resultsContainer.innerHTML = renderSingle(items[0],0); }
+  else {
+    const grid = document.createElement('div'); grid.className='results-grid';
+    items.forEach((it,idx)=>{ const el=document.createElement('div'); el.className='mini-card'; el.innerHTML = renderMini(it,idx); if (it.isCompressing){ const ov=document.createElement('div'); ov.className='overlay'; ov.textContent='Ap konprese...'; el.appendChild(ov);} grid.appendChild(el); });
+    resultsContainer.appendChild(grid);
+  }
+}
+
+function renderSingle(it, idx){
+  if (!it.file) return `<div class="meta">Pa gen done pou fichye sa</div>`;
+  if (it.type==='image'){
+    const thumb = it.thumbUrl ? it.thumbUrl : URL.createObjectURL(it.file);
+    const pct = Math.round(it.progress||0);
+    const processed = formatBytes(it.processedBytes||0);
+    return `<div style="display:flex;gap:12px;flex-wrap:wrap"><div style="flex:1;min-width:260px"><img src="${thumb}" class="preview" alt="preview"><div class="meta">Gwosè orijinal: ${formatBytes(it.originalSize)}</div><div class="meta">${it.compressedSize ? 'Gwosè konprese: '+formatBytes(it.compressedSize) : ''}</div><div style="margin-top:8px"><div class="progress-line"><div style="width:${pct}%" class="progress-fill"></div></div><div class="meta" style="margin-top:6px">${pct}% — ${processed} / ${formatBytes(it.originalSize)}</div></div></div><div style="flex:1;min-width:220px"><div class="meta" style="margin-bottom:8px">Non: <strong>${escapeHtml(it.file.name)}</strong></div><div style="display:flex;gap:8px;flex-wrap:wrap">${it.outPath ? `<a class="btn" href="${it.outPath}" download>Telechaje</a>` : `<button data-idx="${idx}" class="btn compressBtn">Konprese</button>`}${it.handle ? `<button data-idx="${idx}" class="btn ghost replaceBtn">Ranplase</button>` : ''}</div>${it.isCompressing ? `<div style="margin-top:8px;color:var(--muted);font-weight:700">Ap konprese...</div>` : ''}</div></div>`;
+  } else if (it.type==='video'){
+    const vUrl = URL.createObjectURL(it.file);
+    const pct = Math.round(it.progress||0);
+    const processed = formatBytes(it.processedBytes||0);
+    return `<div><video src="${vUrl}" controls style="width:100%;border-radius:12px;background:#000" preload="metadata"></video><div class="meta">Gwosè orijinal: ${formatBytes(it.originalSize)}</div><div style="margin-top:8px;max-width:320px"><div class="progress-line"><div style="width:${pct}%" class="progress-fill"></div></div><div class="meta" style="margin-top:6px">${pct}% — ${processed} / ${formatBytes(it.originalSize)}</div></div><div style="margin-top:8px"><button data-idx="${idx}" class="btn downloadBtn">Telechaje</button>${it.handle ? `<button data-idx="${idx}" class="btn ghost replaceBtn">Ranplase</button>` : ''}</div></div>`;
+  }
+  return `<div class="meta">Tip fichye pa sipòte</div>`;
+}
+
+function renderMini(it, idx){
+  if (!it.file) return `<div class="mini-label">No data</div>`;
+  const pct = Math.round(it.progress||0);
+  const processed = formatBytes(it.processedBytes||0);
+  if (it.type === 'image'){
+    const thumb = it.thumbUrl ? it.thumbUrl : URL.createObjectURL(it.file);
+    return `<img src="${thumb}" class="mini-thumb" alt="thumb"><div class="mini-label">Imaj</div><div class="mini-meta">Orig: ${formatBytes(it.originalSize)}</div><div class="mini-meta">${it.compressedSize ? 'Comp: '+formatBytes(it.compressedSize): ''}</div><div style="width:100%;margin-top:6px"><div class="progress-line"><div style="width:${pct}%" class="progress-fill"></div></div><div class="mini-meta" style="margin-top:6px;text-align:center">${pct}% — ${processed} / ${formatBytes(it.originalSize)}</div></div><div style="display:flex;gap:6px;margin-top:6px">${it.outPath ? `<a class="btn small" href="${it.outPath}" download>Telechaje</a>` : `<button data-idx="${idx}" class="btn small compressSmall">Konprese</button>`}${it.handle ? `<button data-idx="${idx}" class="btn small ghost replaceSmall">Ranplase</button>` : ''}</div>`;
+  }
+  return `<div style="width:100%;height:84px;border-radius:8px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700">Video</div><div class="mini-label">Video</div><div class="mini-meta">Orig: ${formatBytes(it.originalSize)}</div><div style="width:100%;margin-top:6px"><div class="progress-line"><div style="width:${pct}%" class="progress-fill"></div></div><div class="mini-meta" style="margin-top:6px;text-align:center">${pct}% — ${processed} / ${formatBytes(it.originalSize)}</div></div><div style="display:flex;gap:6px;margin-top:6px"><button data-idx="${idx}" class="btn small downloadBtn">Telechaje</button>${it.handle ? `<button data-idx="${idx}" class="btn small ghost replaceSmall">Ranplase</button>` : ''}</div>`;
+}
+
+/* single event delegation on results container */
+resultsContainer.addEventListener('click', async (ev)=>{
+  const btn = ev.target.closest('button, a');
+  if (!btn) return;
+  const idx = btn.dataset && btn.dataset.idx ? Number(btn.dataset.idx) : null;
+  if (btn.classList.contains('compressSmall') || btn.classList.contains('compressBtn')) { if (idx !== null) await compressItem(idx); return; }
+  if (btn.classList.contains('replaceSmall') || btn.classList.contains('replaceBtn')) { if (idx !== null) await replaceItem(idx); return; }
+  if (btn.classList.contains('downloadBtn')) { if (idx !== null) downloadItem(idx); return; }
+});
+
+/* minimal client-side compress fallback (same as before) */
+async function compressItem(idx){
+  const it = items[idx]; if (!it || !it.file) return; if (it.type !== 'image') return alert('Sèlman imaj yo ap konprese.');
+  try {
+    it.isCompressing=true; it.progress=0; it.processedBytes=0; scheduleRender();
+    let prog=0;
+    const timer = setInterval(()=>{ if (!it.isCompressing) return; prog += Math.random()*8+3; if (prog>90) prog=90; it.progress=Math.round(prog); it.processedBytes=Math.round((it.progress/100)*it.originalSize); scheduleRender(); },120);
+    const imgBitmap = await createImageBitmap(it.file);
+    let w=imgBitmap.width,h=imgBitmap.height;
+    const mx = Number(maxw.value)||0; if (mx>0 && w>mx){ h=Math.round(h*(mx/w)); w=mx; }
+    const hasOff = typeof OffscreenCanvas !== 'undefined';
+    let canvas = hasOff ? new OffscreenCanvas(w,h) : document.createElement('canvas');
+    if (!(canvas instanceof OffscreenCanvas)){ canvas.width=w; canvas.height=h; }
+    const ctx = canvas.getContext('2d'); ctx.fillStyle='#fff'; ctx.fillRect(0,0,w,h); ctx.drawImage(imgBitmap,0,0,w,h);
+    const q = Math.max(0.01, Math.min(0.95, Number(qualityEl.value)/100));
+    const outBlob = (canvas instanceof OffscreenCanvas && typeof canvas.convertToBlob === 'function') ? await canvas.convertToBlob({ type:'image/jpeg', quality: q }) : await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', q));
+    clearInterval(timer);
+    it.compressedBlob = outBlob; it.compressedSize = outBlob.size; it.thumbUrl = URL.createObjectURL(outBlob);
+    it.isCompressing=false; it.progress=100; it.processedBytes = it.compressedSize; scheduleRender();
+  } catch (e) { console.error('compressItem error', e); alert('Echèk konpresyon: ' + (e.message||e)); it.isCompressing=false; it.progress=0; it.processedBytes=0; scheduleRender(); }
+}
+
+function downloadItem(idx){
+  const it = items[idx]; if (!it) return;
+  if (it.outPath){ const a = document.createElement('a'); a.href = it.outPath; a.download = it.file ? it.file.name.replace(/\.[^/.]+$/,'') + '.jpg' : 'file.jpg'; a.click(); }
+  else if (it.type==='image' && it.compressedBlob){ const a = document.createElement('a'); a.href = URL.createObjectURL(it.compressedBlob); a.download = it.file.name.replace(/\.[^/.]+$/, '') + '.jpg'; a.click(); }
+  else { const a = document.createElement('a'); a.href = URL.createObjectURL(it.file); a.download = it.file.name; a.click(); }
+}
+
+async function replaceItem(idx){
+  const it = items[idx]; if (!it || !it.handle) return alert('Pa gen dwa ranplase (chwazi lè l sèvi ak picker).');
+  if (!confirm('Ranplase fichye orijinal la avèk vèsyon konprese a?')) return;
+  try {
+    const toWrite = (it.type==='image' && (it.compressedBlob || it.outPath)) ? (it.compressedBlob ? it.compressedBlob : await fetch(it.outPath).then(r=>r.blob())) : it.file;
+    const writable = await it.handle.createWritable(); await writable.write(toWrite); await writable.close();
+    const newFile = await it.handle.getFile(); it.file = newFile; it.originalSize = newFile.size; updateUI();
+  } catch(e){ console.error('replaceItem error', e); alert('Echèk ranplase: ' + (e.message||e)); }
+}
+
+function updateOverallProgress(){
+  const totalOriginal = items.reduce((s,it)=> s + (it.originalSize||0), 0);
+  const totalProcessed = items.reduce((s,it)=> s + (it.processedBytes||0), 0);
+  const pct = totalOriginal>0 ? Math.min(100, Math.round((totalProcessed/totalOriginal)*100)) : 0;
+  overallFill.style.width = pct + '%';
+  overallText.textContent = `${pct}% — ${formatBytes(totalProcessed)} / ${formatBytes(totalOriginal)}`;
+}
+
+/* SSE/session management: no UI logs appended, only update UI/progress */
+async function ensureSessionAndSse(){
+  if (sse && sse.readyState === 1) return true;
+  try {
+    const r = await fetch('/session');
+    if (!r.ok) throw new Error('session request failed');
+    const j = await r.json(); clientId = j.clientId;
+    if (sse && (sse.readyState === 0 || sse.readyState === 1)) try { sse.close(); } catch(e){}
+    sse = new EventSource('/sse?id=' + encodeURIComponent(clientId));
+    sse.onopen = ()=>{ topStatus.textContent = ''; };
+    sse.onerror = ()=>{ topStatus.textContent = 'SSE error'; };
+    if (!sseListenersAttached){
+      sse.addEventListener('file-progress', (ev)=>{
+        try {
+          const d = JSON.parse(ev.data);
+          const idx = d.index;
+          if (typeof idx === 'number' && items[idx]){
+            items[idx].processedBytes = d.processedBytes || items[idx].processedBytes || 0;
+            items[idx].progress = d.progress || items[idx].progress || 0;
+          }
+          scheduleRender();
+        } catch(e){ /* ignore parse errors */ }
+      });
+      sse.addEventListener('overall-progress', (ev)=>{
+        try {
+          const d = JSON.parse(ev.data);
+          overallFill.style.width = (d.progress||0) + '%';
+          overallText.textContent = `${d.progress||0}% — ${formatBytes(d.processedBytes||0)} / ${formatBytes(d.totalOriginal||0)}`;
+          scheduleRender();
+        } catch(e){}
+      });
+      sse.addEventListener('file-done', (ev)=>{
+        try {
+          const d = JSON.parse(ev.data);
+          const idx = d.index;
+          if (typeof idx === 'number' && items[idx]){
+            items[idx].compressedSize = d.compressedSize || items[idx].compressedSize;
+            items[idx].outPath = d.outPath || items[idx].outPath;
+            items[idx].progress = 100;
+            items[idx].processedBytes = d.compressedSize || items[idx].processedBytes || items[idx].originalSize;
+          }
+          scheduleRender();
+        } catch(e){}
+      });
+      sse.addEventListener('done', (ev)=>{ try { topStatus.textContent = 'All files processed'; scheduleRender(); } catch(e){} });
+      sseListenersAttached = true;
+    }
+    return true;
+  } catch(err){
+    alert('Pa ka konekte ak backend session/SSE — verifye ke backend kouri sou menm origin.');
+    return false;
+  }
+}
+
+/* upload (compress all) */
+async function compressAllHandler(){
+  if (!items || items.length ===0) { alert('Pa gen fichye chwazi'); return; }
+  if (compressAllHandler._running) return;
+  compressAllHandler._running = true;
+  compressAllBtn.disabled = true;
+  topStatus.textContent = '';
+  try {
+    const ok = await ensureSessionAndSse(); if (!ok) return;
+    const fd = new FormData();
+    items.forEach(it => { if (it && it.file) fd.append('files', it.file, it.file.name); });
+    fd.append('quality', String(Number(qualityEl.value||80)));
+    fd.append('maxWidth', String(Number(maxw.value||0)));
+    topStatus.textContent = '';
+    const resp = await fetch('/api/compress-multi?id=' + encodeURIComponent(clientId), { method:'POST', body: fd });
+    if (!resp.ok) { const txt = await resp.text().catch(()=>''); throw new Error('Upload failed ' + resp.status + ' ' + txt); }
+    topStatus.textContent = 'Server processing...';
+  } catch(err){ topStatus.textContent = 'Upload failed'; alert('Upload echwe: ' + (err.message||err)); }
+  finally { compressAllHandler._running = false; compressAllBtn.disabled = false; }
+}
+
+compressAllBtn.addEventListener('click', compressAllHandler);
+replaceAllBtn.addEventListener('click', ()=>{ /* reuse replaceAll from earlier if you want */ });
+
+(function init(){ compressAllBtn.disabled = true; replaceAllBtn.disabled = true; clearAllBtn.disabled = true; resultsSection.style.display='none'; overallFill.style.width='0%'; overallText.textContent='0% — 0 B / 0 B'; })();
+</script>
+</body>
+</html>
