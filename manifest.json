@@ -1,7 +1,7 @@
 {
-  "name": "TF-Stream",
-  "short_name": "TF-Stream",
-  "description": "TF-Stream — Compress, Replace & Stream files with clean iOS-style UI",
+  "name": "TF-Compress",
+  "short_name": "TF-Compress",
+  "description": "TF-Compress, Replace & Stream files with clean iOS-style UI",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
