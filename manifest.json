@@ -1,0 +1,66 @@
+{
+  "name": "TF-Stream",
+  "short_name": "TF-Stream",
+  "description": "TF-Stream — Compress, Replace & Stream files with clean iOS-style UI",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "sizes": "72x72",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "sizes": "96x96",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "sizes": "128x128",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "sizes": "144x144",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "sizes": "152x152",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "sizes": "256x256",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "sizes": "384x384",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    }
+  ]
+}
