@@ -1,7 +1,7 @@
 {
   "name": "TF-Compress",
   "short_name": "TF-Compress",
-  "description": "TF-Compress, Replace & Stream files with clean iOS-style UI",
+  "description": "TF-Compress",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -9,55 +9,55 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "src": "https://pub-492e70d33eda40ce82bfd913ddb4cd90.r2.dev/1761695466861-Screenshot_20251028_194846_Chrome.jpg",
       "sizes": "72x72",
       "type": "image/jpeg",
       "purpose": "any maskable"
     },
     {
-      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "src": "https://pub-492e70d33eda40ce82bfd913ddb4cd90.r2.dev/1761695466861-Screenshot_20251028_194846_Chrome.jpg",
       "sizes": "96x96",
       "type": "image/jpeg",
       "purpose": "maskable"
     },
     {
-      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "src": "https://pub-492e70d33eda40ce82bfd913ddb4cd90.r2.dev/1761695466861-Screenshot_20251028_194846_Chrome.jpg",
       "sizes": "128x128",
       "type": "image/jpeg",
       "purpose": "maskable"
     },
     {
-      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "src": "https://pub-492e70d33eda40ce82bfd913ddb4cd90.r2.dev/1761695466861-Screenshot_20251028_194846_Chrome.jpg",
       "sizes": "144x144",
       "type": "image/jpeg",
       "purpose": "maskable"
     },
     {
-      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "src": "https://pub-492e70d33eda40ce82bfd913ddb4cd90.r2.dev/1761695466861-Screenshot_20251028_194846_Chrome.jpg",
       "sizes": "152x152",
       "type": "image/jpeg",
       "purpose": "maskable"
     },
     {
-      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "src": "https://pub-492e70d33eda40ce82bfd913ddb4cd90.r2.dev/1761695466861-Screenshot_20251028_194846_Chrome.jpg",
       "sizes": "192x192",
       "type": "image/jpeg",
       "purpose": "maskable"
     },
     {
-      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "src": "https://pub-492e70d33eda40ce82bfd913ddb4cd90.r2.dev/1761695466861-Screenshot_20251028_194846_Chrome.jpg",
       "sizes": "256x256",
       "type": "image/jpeg",
       "purpose": "maskable"
     },
     {
-      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "src": "https://pub-492e70d33eda40ce82bfd913ddb4cd90.r2.dev/1761695466861-Screenshot_20251028_194846_Chrome.jpg",
       "sizes": "384x384",
       "type": "image/jpeg",
       "purpose": "maskable"
     },
     {
-      "src": "https://pub-46b5efc7a2f74e6797b554c867465fc0.r2.dev/1761363481529-ixgmht.jpg",
+      "src": "https://pub-492e70d33eda40ce82bfd913ddb4cd90.r2.dev/1761695466861-Screenshot_20251028_194846_Chrome.jpg",
       "sizes": "512x512",
       "type": "image/jpeg",
       "purpose": "maskable"
